@@ -37,4 +37,4 @@
   add_host:
     name: "{{ item.public_dns_name }}"
     groups: metrics
-  with_items: metrics_ec2.instances
+  with_items: "{{ metrics_ec2.instances | rejectattr('state', 'equalto', 'terminated') | list }}"
