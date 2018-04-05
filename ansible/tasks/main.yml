@@ -8,9 +8,12 @@
 
 - hosts: metrics
   remote_user: "{{ remote_user }}"
+  gather_facts: false
   become: yes
   become_method: sudo
   pre_tasks:
+    # Ansible requires python2, which is not installed by default on Ubuntu Xenial
+    - raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
     - include_vars: ../defaults/main.yml
   roles:
     - common
@@ -21,9 +24,12 @@
 
 - hosts: zookeeper
   remote_user: "{{ remote_user }}"
+  gather_facts: false
   become: yes
   become_method: sudo
   pre_tasks:
+    # Ansible requires python2, which is not installed by default on Ubuntu Xenial
+    - raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
     - include_vars: ../defaults/main.yml
   roles:
     - common
@@ -32,9 +38,12 @@
 
 - hosts: peer
   remote_user: "{{ remote_user }}"
+  gather_facts: false
   become: yes
   become_method: sudo
   pre_tasks:
+    # Ansible requires python2, which is not installed by default on Ubuntu Xenial
+    - raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
     - include_vars: ../defaults/main.yml
   vars:
     - prepare_onyx: yes
