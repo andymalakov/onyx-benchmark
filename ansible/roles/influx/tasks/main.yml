@@ -23,7 +23,8 @@
     name: influx_data
     image: alpine:3.6
     detach: yes
-    state: restarted
+    state: started
+    restart: yes
     restart_policy: always
     restart_retries: 128
     command: echo 'InfluxDB data container'
@@ -36,7 +37,8 @@
     image: tutum/influxdb:0.9
     net: host
     detach: yes
-    state: restarted
+    state: started
+    restart: yes
     restart_policy: always
     restart_retries: 128
     volumes_from:
