@@ -6,10 +6,10 @@
     mode: 0755
     recurse: yes
 
-- name: Create the InfluxDB data container
+- name: Create the InfluxDB data container (Alpine Linux)
   docker:
     name: influx_data
-    image: alpine:3.2
+    image: alpine:3.6
     detach: yes
     state: restarted
     restart_policy: always
