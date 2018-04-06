@@ -18,7 +18,7 @@
     state: present
 
 - name: Install docker-py
-  shell: pip install docker-py >= 1.7.0
+  shell: pip install docker-py #>= 1.7.0
 
 - name: Install httplib2
   shell: pip install httplib2
