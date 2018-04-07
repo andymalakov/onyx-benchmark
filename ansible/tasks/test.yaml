@@ -1,0 +1,42 @@
+---
+- hosts: local
+  connection: local
+  #become: yes
+  #become_user: root
+  vars:
+    - influx_data_dir: /data/influx
+  tasks:
+    - name: Create the durable InfluxDB data directory
+      file:
+        path: "{{ influx_data_dir }}"
+        state: directory
+        mode: 0755
+        recurse: yes
+
+    - name: Create the InfluxDB data container (Alpine Linux)
+      docker_container:
+        name: influx_data
+        image: alpine:3.6
+        detach: yes
+        state: started
+        restart: yes
+        restart_policy: always
+        #restart_retries: 128
+        command: echo 'InfluxDB data container'
+        volumes:
+          - "{{ influx_data_dir }}:/data"
+
+    - name: Run InfluxDB container
+      docker_container:
+        name: influx
+        image: tutum/influxdb:0.9
+        network_mode: host
+        detach: yes
+        state: started
+        restart: yes
+        restart_policy: always
+        #restart_retries: 128
+        volumes_from:
+          - influx_data
+        env:
+          PRE_CREATE_DB: "grafana"
