@@ -22,7 +22,7 @@
 - name: Kill the ZooKeeper data container
   docker_container:
     name: zookeeper_data
-    image: alpine:3.2
+    image: alpine:3.6
     state: killed
   when: "{{ refresh_zookeeper }}"
 
