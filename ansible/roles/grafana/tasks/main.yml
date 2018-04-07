@@ -1,11 +1,12 @@
 ---
 - name: Run Grafana container
-  docker:
+  docker_container:
     name: grafana
     image: grafana/grafana
-    net: host
+    network_mode: host
     detach: yes
-    state: restarted
+
+    state: started
     restart_policy: always
     restart_policy_retry: 128
     env:

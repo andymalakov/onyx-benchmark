@@ -8,14 +8,14 @@
     mode: 0555
 
 - name: Run Riemann container
-  docker:
+  docker_container:
     name: riemann
     image: rlister/riemann:latest
-    net: host
+    network_mode: host
     detach: yes
-    state: restarted
+    state: started
     restart_policy: always
-    restart_policy_retry: 128
+    #restart_retries: 128 #conflicts with "always"
     volumes:
       - /srv/riemann.config:/app/etc/riemann.config
 
