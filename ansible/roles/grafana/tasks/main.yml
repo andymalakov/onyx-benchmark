@@ -5,10 +5,9 @@
     image: grafana/grafana
     network_mode: host
     detach: yes
-
     state: started
     restart_policy: always
-    restart_policy_retry: 128
+    #restart_retries: 128 #conflicts with "always"
     env:
       GF_HTTP_ADDR: 0.0.0.0
 
