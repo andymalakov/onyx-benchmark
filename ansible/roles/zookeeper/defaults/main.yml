@@ -16,7 +16,7 @@ data_dir: /var/lib/zookeeper
 log_dir: /var/log/zookeeper
 zookeeper_dir: /opt/zookeeper-{{zookeeper_version}}
 
-refresh_zookeeper: true
+refresh_zookeeper: false
 zookeeper_data_dir: /data/zookeeper
 
 zookeeper_docker_image: mesoscloud/zookeeper:{{zookeeper_version}}-ubuntu-14.04
