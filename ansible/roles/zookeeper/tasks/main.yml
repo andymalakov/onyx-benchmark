@@ -50,8 +50,7 @@
     volumes_from:
       - zookeeper_data
     env:
-#      MYID: "{{ groups.zookeeper | natural_index_of(inventory_hostname) }}"
-      MYID: "{{ groups.zookeeper.index(inventory_hostname)+1 }}"
+      MYID: "{{ groups.zookeeper.index(inventory_hostname)+1 }}" #Was: "{{ groups.zookeeper | natural_index_of(inventory_hostname) }}"
       SERVERS: "{{ groups.zookeeper | join(',') }}"
 
 - name: Wait for ZooKeeper to come up
