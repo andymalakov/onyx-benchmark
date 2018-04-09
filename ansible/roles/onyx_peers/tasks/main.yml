@@ -1,5 +1,5 @@
 ---
-- include: prepare.yml
+- import_tasks: prepare.yml
   when: prepare_onyx
 
-- include: onyx.yml
+- import_tasks: onyx.yml
