@@ -42,7 +42,7 @@
 
 
 - name: Create Internet Gateway for VPC
-  ec2_igw:
+  ec2_vpc_igw:
     vpc_id:         "{{ vpc_id }}"
     state:          present
     aws_access_key: "{{ aws_access_key }}"
@@ -50,7 +50,7 @@
     region:         "{{ aws_region }}"
   register: onyx_vpc_igw
 
-- name:  Bind Internet Gateway ID in variable
+- name: Bind Internet Gateway ID in variable
   set_fact:
     igw_id:         "{{ onyx_vpc_igw.gateway_id }}"
 
