@@ -1,2 +1,17 @@
 ---
 # defaults file for aws
+
+
+# VPC settings
+
+# VPC Information
+vpc_name:       "My VPC"
+vpc_cidr_block: "172.0.0.0/16"
+
+# For Security Group Rule
+#my_ip:          "X.X.X.X"
+
+# Subnets
+public_subnet_1_cidr:  "172.0.1.0/24"
+
+
